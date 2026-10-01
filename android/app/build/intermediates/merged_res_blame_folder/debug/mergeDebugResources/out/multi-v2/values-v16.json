@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.bimiboo.toddlergames.app-mergeDebugResources-45:/values-v16/values-v16.xml",
+            "map": [
+                {
+                    "source": "D:\\Android\\.gradle\\caches\\8.11.1\\transforms\\3d3cf5816a7480b037609a4ce7606d02\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                }
+            ]
+        }
+    ]
+}
