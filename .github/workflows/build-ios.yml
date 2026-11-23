@@ -1,0 +1,49 @@
+name: Build iOS IPA for Sideloadly
+
+on:
+  push:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  build-ipa:
+    name: Build IPA (macOS)
+    runs-on: macos-14
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode Project
+        run: |
+          cd ios
+          xcodegen generate
+
+      - name: Build iOS App (.app)
+        run: |
+          xcodebuild clean build \
+            -project ios/ToddlerGames.xcodeproj \
+            -scheme ToddlerGames \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath ios/build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: Package IPA for Sideloadly
+        run: |
+          mkdir -p Payload
+          cp -r ios/build/Build/Products/Release-iphoneos/ToddlerGames.app Payload/
+          zip -qr ToddlerGames.ipa Payload
+          mkdir -p build_output
+          mv ToddlerGames.ipa build_output/
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ToddlerGames-IPA
+          path: build_output/ToddlerGames.ipa
+          retention-days: 14

@@ -1,0 +1,23 @@
+name: ToddlerGames
+options:
+  bundleIdPrefix: com.bimiboo
+  deploymentTarget:
+    iOS: "15.0"
+targets:
+  ToddlerGames:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: ToddlerGames
+    info:
+      path: ToddlerGames/Info.plist
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.bimiboo.toddlergames
+      MARKETING_VERSION: "1.0.0"
+      CURRENT_PROJECT_VERSION: "1"
+      SWIFT_VERSION: "5.0"
+      GENERATE_INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
+      CODE_SIGNING_ALLOWED: "NO"
+      CODE_SIGNING_REQUIRED: "NO"
+      CODE_SIGN_IDENTITY: ""

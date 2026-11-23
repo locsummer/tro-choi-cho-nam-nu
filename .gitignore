@@ -1,0 +1,10 @@
+# Build outputs
+android/app/build/
+android/.gradle/
+ios/build/
+*.ipa
+*.apk
+
+# OS generated
+.DS_Store
+Thumbs.db
