@@ -214,3 +214,51 @@ struct ShapeSortingGameView: View {
         availableShapes = set.shuffled().map { ShapeItem(type: $0) }
     }
 }
+
+// MARK: - Shape Icon View
+struct ShapeIcon: View {
+    let type: ShapeType
+    
+    var body: some View {
+        switch type {
+        case .circle:
+            Circle()
+        case .square:
+            Rectangle()
+        case .triangle:
+            Triangle()
+        case .star:
+            Image(systemName: "star.fill")
+                .resizable()
+                .scaledToFit()
+        case .heart:
+            Image(systemName: "heart.fill")
+                .resizable()
+                .scaledToFit()
+        case .diamond:
+            Image(systemName: "diamond.fill")
+                .resizable()
+                .scaledToFit()
+        case .moon:
+            Image(systemName: "moon.fill")
+                .resizable()
+                .scaledToFit()
+        case .cloud:
+            Image(systemName: "cloud.fill")
+                .resizable()
+                .scaledToFit()
+        }
+    }
+}
+
+// MARK: - Triangle Shape
+struct Triangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.closeSubpath()
+        return path
+    }
+}
